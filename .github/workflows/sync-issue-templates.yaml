@@ -1,3 +1,14 @@
+# Synchronize Issue Templates from here to several repositories.
+# This lets us define issue templates in one place and then update them
+# elsewhere as they are changed.
+#
+# Summary:
+# - It uses a personal access token that I created with write permissions to 2i2c repositories
+# - Upon commit to main, it will check for changes in the files defined in `sync.yml`
+# - If a file is changed, it will make a PR to update that file in the target repositories
+#
+# ref: https://github.com/BetaHuhn/repo-file-sync-action
+
 name: "Sync Issue Templates"
 on:
   push:
