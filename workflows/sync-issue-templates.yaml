@@ -1,4 +1,4 @@
-name: Sync Issue Templates
+name: "Sync Issue Templates"
 on:
   push:
     branches:
