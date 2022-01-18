@@ -3,7 +3,7 @@
 # elsewhere as they are changed.
 #
 # Summary:
-# - It uses a personal access token that I created with write permissions to 2i2c repositories
+# - It uses a personal access token for @choldgraf with write permissions to 2i2c repositories
 # - Upon commit to main, it will check for changes in the files defined in `sync.yml`
 # - If a file is changed, it will make a PR to update that file in the target repositories
 #
