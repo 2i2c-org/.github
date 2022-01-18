@@ -1,0 +1,12 @@
+group:
+  # Private repositories require a markdown file
+  - repos: |
+      2i2c-org/meta
+    files: 
+      - .github/ISSUE_TEMPLATE/01_new-issue.md
+  # Our public repositories use a YML file
+  - repos: |
+      2i2c-org/infrastructure
+      2i2c-org/team-compass
+    files: 
+      - .github/ISSUE_TEMPLATE/01_new-issue.yml
