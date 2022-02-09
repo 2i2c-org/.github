@@ -5,12 +5,12 @@ about: A general template for many kinds of issues.
 
 ### Describe the problem or idea
 
-**Context to understand the problem**
+**Context**
 Background information: When ___ kind of person is trying to do ___, then ___ happens.
-Problem or idea:  This is a problem because ___. It would be better if ___.
+Problem or opportunity:  This is a problem because ___. It would be better if ___.
 
 **Proposed solution**
-Specific action to take: We should make it possible to ___ by doing ___.
+Action to take: We should make it possible to ___ by doing ___.
 Value and who benefits: This would allow ___ users to ___.
 
 ### Implementation guide
