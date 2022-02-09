@@ -3,7 +3,7 @@ name: "💡 General Issue"
 about: A general template for many kinds of issues.
 ---
 
-### Describe the problem or idea
+### Background and proposal
 
 **Context**
 Background information: When ___ kind of person is trying to do ___, then ___ happens.
@@ -13,7 +13,9 @@ Problem or opportunity:  This is a problem because ___. It would be better if __
 Action to take: We should make it possible to ___ by doing ___.
 Value and who benefits: This would allow ___ users to ___.
 
-### Implementation guide
+### Implementation guide and constraints
+
+<!-- Anything that will help lower the uncertainty in doing this. -->
 
 - The best way to do this would be...
 - This work should *not* include...
