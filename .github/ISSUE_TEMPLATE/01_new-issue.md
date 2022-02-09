@@ -5,32 +5,15 @@ about: A general template for many kinds of issues.
 
 ### Describe the problem or idea
 
-<!--
-- **What is the problem** that needs to be solved?
-- **What is the solution** that would resolve it?
-- **What is the opportunity / value** in solving this problem? And for who?
--->
-   
-<!-- A few ideas to get started -->
 **Context to understand the problem**
-When ___ kind of person is trying to do ___.
-
-**Problem or idea**
-It is common to want to do ___. However, this isn't currently possible because ___.
+Background information: When ___ kind of person is trying to do ___, then ___ happens.
+Problem or idea:  This is a problem because ___. It would be better if ___.
 
 **Proposed solution**
-So, we should implement ___ by doing ___.
-
-**What's the value and who would benefit**
-This would allow ___ users to do ___ which would be useful because ___.
+Specific action to take: We should make it possible to ___ by doing ___.
+Value and who benefits: This would allow ___ users to ___.
 
 ### Implementation guide
-
-<!--
-- Suggestions to reduce risk and guide others who may want to implement a solution.
-- Constraints and "out of scope" ideas that shouldn't be addressed here.
-- Time boxes and work planning.
--->
 
 - The best way to do this would be...
 - This work should *not* include...
