@@ -2,34 +2,42 @@ name: 💡 General Issue
 description: A general template for many kinds of issues.
 body:
   - type: textarea
-    id: description
+    id: context
     attributes:
-      label: Background and proposal
+      label: Context
       description: |
+        Any background information that helps others take understand this issue.
+
         - **What is the problem** that needs to be solved?
         - **What is the solution** that would resolve it?
         - **What is the opportunity / value** in solving this problem? And for who?
-
-        _below is a suggested structure_
       value: |
-        **Context**
-        Background information: When ___ kind of person is trying to do ___, then ___ happens.
-        Problem or opportunity:  This is a problem because ___. It would be better if ___.
-
-        **Proposed solution**
-        Action to take: We should make it possible to ___ by doing ___.
-        Value and who benefits: This would allow ___ users to ___.
-
+        When ___ kind of person is trying to do ___, then ___ happens.
+        This is a problem because ___. It would be better if ___.
     validations:
       required: true
 
   - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: |
+        A clear and concise description of what we should do.
+      value: |
+        We should make it possible to ___ by doing ___.
+        This would allow ___ users to ___.
+
+    validations:
+      required: true
+
+
+  - type: textarea
     id: implementation
     attributes:
-      label: Implementation guide and constraints
+      label: Implementation guide
       description: |
 
-        _Anything that will help lower the uncertainty in doing this._
+        Anything that will help lower the uncertainty in doing this.
 
         - Suggestions to reduce risk and guide others who may want to implement a solution.
         - Constraints and "out of scope" ideas that shouldn't be addressed here.
@@ -45,7 +53,7 @@ body:
   - type: textarea
     id: tasks
     attributes:
-      label: Updates and ongoing work
+      label: Updates and actions
       description: |
         Provide updates as we start to plan and do work.
         - Sub-issues and tasks to work on
