@@ -9,11 +9,11 @@ about: A general template for many kinds of issues.
 
 ### Proposal
 
-<!-- (optional) A clear and concise description of what we should do, if we have a next step in mind. -->
+<!--
+(optional) A clear and concise description of what we should do, if we have a next step in mind.
 
-### Implementation guide
-
-<!-- (optional) Anything that will lower our uncertainty in resolving this, if we have instructions, constraints to follow, red flags to avoid, etc. -->
+Add any guidance that will lower our uncertainty in resolving this (e.g., instructions, constraints to follow, red flags to avoid).
+-->
 
 ### Updates and actions
 
