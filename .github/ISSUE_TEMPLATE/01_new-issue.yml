@@ -6,14 +6,7 @@ body:
     attributes:
       label: Context
       description: |
-        Any background information that helps others take understand this issue.
-
-        - **What is the problem** that needs to be solved?
-        - **What is the solution** that would resolve it?
-        - **What is the opportunity / value** in solving this problem? And for who?
-      value: |
-        When ___ kind of person is trying to do ___, then ___ happens.
-        This is a problem because ___. It would be better if ___.
+        Any background information that helps others take understand this issue and why it is important.
     validations:
       required: true
 
@@ -22,13 +15,10 @@ body:
     attributes:
       label: Proposal
       description: |
-        A clear and concise description of what we should do.
-      value: |
-        We should make it possible to ___ by doing ___.
-        This would allow ___ users to ___.
+        (optional) A clear and concise description of what we should do, if we have a next step in mind.
 
     validations:
-      required: true
+      required: false
 
 
   - type: textarea
@@ -36,16 +26,7 @@ body:
     attributes:
       label: Implementation guide
       description: |
-
-        Anything that will help lower the uncertainty in doing this.
-
-        - Suggestions to reduce risk and guide others who may want to implement a solution.
-        - Constraints and "out of scope" ideas that shouldn't be addressed here.
-        - Time boxes and work planning.
-      placeholder: |
-        - The best way to do this would be...
-        - This work should *not* include...
-        - We should try to do ___ in a 2-week time box before moving further.
+        (optional) Anything that will lower our uncertainty in resolving this, if we have instructions, constraints to follow, red flags to avoid, etc.
 
     validations:
       required: false
@@ -55,10 +36,7 @@ body:
     attributes:
       label: Updates and actions
       description: |
-        Provide updates as we start to plan and do work.
-        - Sub-issues and tasks to work on
-        - Links to project boards
-        - Updates over time
+        (optional) A place to track ongoing work items or tasks, as we figure them out.
 
     validations:
       required: false
