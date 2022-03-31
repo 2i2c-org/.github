@@ -3,29 +3,18 @@ name: "💡 General Issue"
 about: A general template for many kinds of issues.
 ---
 
-### Background and proposal
+### Context
 
-**Context**
-Background information: When ___ kind of person is trying to do ___, then ___ happens.
-Problem or opportunity:  This is a problem because ___. It would be better if ___.
+<!-- Any background information that helps others take understand this issue and why it is important. -->
 
-**Proposed solution**
-Action to take: We should make it possible to ___ by doing ___.
-Value and who benefits: This would allow ___ users to ___.
-
-### Implementation guide and constraints
-
-<!-- Anything that will help lower the uncertainty in doing this. -->
-
-- The best way to do this would be...
-- This work should *not* include...
-- We should try to do ___ in a 2-week time box before moving further.
-
-### Updates and ongoing work
+### Proposal
 
 <!--
-Provide updates as we start to plan and do work.
-- Sub-issues and tasks to work on
-- Links to project boards
-- Updates over time
+(optional) A clear and concise description of what we should do, if we have a next step in mind.
+
+Add any guidance that will lower our uncertainty in resolving this (e.g., instructions, constraints to follow, red flags to avoid).
 -->
+
+### Updates and actions
+
+<!-- (optional) A place to track ongoing work items or tasks, as we figure them out. -->
