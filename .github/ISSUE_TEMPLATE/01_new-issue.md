@@ -5,7 +5,7 @@ about: A general template for many kinds of issues.
 
 ### Context
 
-<!-- Any background information that helps others take understand this issue and why it is important. -->
+<!-- Any background information that helps others understand this issue and why it is important. -->
 
 ### Proposal
 
