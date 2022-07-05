@@ -4,18 +4,14 @@
 # - Build the documentation with Sphinx using linkcheck
 # - Output the warnings in a warnings.txt file
 # - If the file exists, re-format the file to be markdown
-# - (re)open an issue at the specified issue number with the formatted text
+# - If a "broken links" issue is open, it will update the issue w/ this markdown
+# - If not, it will open a new "broken links" issue with this markdown
+
 name: Build documentation, check links, and open an issue
 
 on:
   workflow_call:
     inputs:
-      # An issue number in the repository that calls this workflow.
-      # If errors are found, this action will (re)open the issue with that number.
-      # Needs to already exist so open the issue first, then copy/paste the number!
-      issue_number:
-        required: true
-        type: number
       # Path to the documentation root in the calling repository.
       docs_path:
         required: false
@@ -26,6 +22,11 @@ on:
         required: false
         type: string
         default: requirements.txt
+      # The title of the "broken links" issue to open / update
+      issue_title:
+        required: false
+        type: string
+        default: "Broken links in documentation"
 
 env:
   # Needed for opening the issue at the end
@@ -85,14 +86,22 @@ jobs:
                 out.append(f"{iline}\n")
           warnings.write_text("\n".join(out))
 
+      # List open issues with the title we use for broken links
+      # Grab the number of the first one if it exists and assign to a variable
+      # If it doesn't exist, will be "None" and a new issue will be created
+      # If it does, we will update that issue.
+      - name: Check for an open issue
+        run: |
+          ISSUE_NUMBER=$( gh issue list --search "${{ inputs.issue_title }}" | awk '{print $1}' )
+          echo "ISSUE_NUMBER=$ISSUE_NUMBER" >> $GITHUB_ENV
+
+      # Use the warnings.txt content to populate a new issue.
+      # If ISSUE_NUMBER is None, a new issue will be created.
+      # otherwise a pre-existing issue will be updated.
       - name: Create issue from errors output
         if: steps.buildDocs.outcome == 'failure'
         uses: peter-evans/create-issue-from-file@v4.0.0
         with:
-          issue-number: ${{ inputs.issue_number }}
-          title: Broken links in documentation
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          title: ${{ inputs.issue_title }}
           content-filepath: ./warnings.txt
-
-      - name: Re-open the links issue
-        if: steps.buildDocs.outcome == 'failure'
-        run: gh issue reopen ${{ inputs.issue_number }}
