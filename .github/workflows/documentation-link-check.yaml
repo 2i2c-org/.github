@@ -86,8 +86,10 @@ jobs:
                 out.append(f"{iline}\n")
           warnings.write_text("\n".join(out))
 
-      # Return a list of open issues with the title we use for broken links
-      # If one exists, we update that issue. If not, then we create a new issue.
+      # List open issues with the title we use for broken links
+      # Grab the number of the first one if it exists and assign to a variable
+      # If it doesn't exist, will be "None" and a new issue will be created
+      # If it does, we will update that issue.
       - name: Check for an open issue
         run: |
           ISSUE_NUMBER=$( gh issue list --search "${{ inputs.issue_title }}" | awk '{print $1}' )
