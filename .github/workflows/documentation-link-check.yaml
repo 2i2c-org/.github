@@ -12,12 +12,6 @@ name: Build documentation, check links, and open an issue
 on:
   workflow_call:
     inputs:
-      # An issue number in the repository that calls this workflow.
-      # If errors are found, this action will (re)open the issue with that number.
-      # Needs to already exist so open the issue first, then copy/paste the number!
-      issue_number:
-        required: true
-        type: number
       # Path to the documentation root in the calling repository.
       docs_path:
         required: false
@@ -106,6 +100,6 @@ jobs:
         if: steps.buildDocs.outcome == 'failure'
         uses: peter-evans/create-issue-from-file@v4.0.0
         with:
-          issue-number: ${{ inputs.issue_number }}
+          issue-number: ${{ env.issue_number }}
           title: ${{ inputs.issue_title }}
           content-filepath: ./warnings.txt
