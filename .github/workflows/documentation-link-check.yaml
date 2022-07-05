@@ -1,0 +1,98 @@
+# A re-usable GitHub Workflow to run a Sphinx warning / linkcheck audit.
+# Meant for re-use in 2i2c's repositories.
+# This will:
+# - Build the documentation with Sphinx using linkcheck
+# - Output the warnings in a warnings.txt file
+# - If the file exists, re-format the file to be markdown
+# - (re)open an issue at the specified issue number with the formatted text
+name: Build documentation, check links, and open an issue
+
+on:
+  workflow_call:
+    inputs:
+      # An issue number in the repository that calls this workflow.
+      # If errors are found, this action will (re)open the issue with that number.
+      # Needs to already exist so open the issue first, then copy/paste the number!
+      issue_number:
+        required: true
+        type: number
+      # Path to the documentation root in the calling repository.
+      docs_path:
+        required: false
+        type: string
+        default: .
+      # Path to a requirements file in the calling repository.
+      requirements_path:
+        required: false
+        type: string
+        default: requirements.txt
+
+env:
+  # Needed for opening the issue at the end
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+          cache: "pip"
+      - name: Install python
+        run: pip install -r ${{ inputs.requirements_path }}
+
+      # By using `-q` linkcheck will treat broken links + missing refs as warnings
+      # warnings.txt will have text only if there are errors
+      - name: Build the documentation and check links
+        id: buildDocs
+        continue-on-error: true
+        run: |
+          sphinx-build ${{ inputs.docs_path }} ${{ inputs.docs_path }}/_build -w warnings.txt -q -N -b linkcheck
+
+      # The remaining steps will only be called if the Sphinx build *fails*
+      # This would mean that there are broken links or references.
+      - name: Parse output and format for report
+        if: steps.buildDocs.outcome == 'failure'
+        shell: python
+        run: |
+          """Format a sphinx warnings file to be used in a GitHub issue.
+
+          This will:
+          - Parse a sphinx warnings file called `warnings.txt`
+          - Grab the relative file path + line number for each warning
+          - Build a GitHub link that points to this path/line
+          - It does this by assuming a GITHUB_REPOSITORY variable is defined like `ORG/REPO`
+          - Over-writes warnings.txt so that it can be inserted into a markdown file.
+          """
+          from pathlib import Path
+          import os
+
+          warnings = Path("warnings.txt")
+          repo = os.environ.get("GITHUB_REPOSITORY")
+          here = Path().resolve()
+
+          # Parse each line for the file / line number and build GitHub links.
+          out = ["### Link and reference warnings", ""]
+          for iline in warnings.read_text().strip().split("\n"):
+              file_path, warning = iline.split(": ", 1)
+              file_path, lineno = file_path.rsplit(":")
+              if str(here) in file_path:
+                  rel_path = file_path.replace(str(here), "").strip("/")
+                  out.append(f"- [**{rel_path}#{lineno}**](https://github.com/{repo}/blob/main/{rel_path}?plain=1#L{lineno})\n    - {warning}\n")
+              else:
+                out.append(f"- {iline}\n")
+          warnings.write_text("\n".join(out))
+
+      - name: Create issue from errors output
+        if: steps.buildDocs.outcome == 'failure'
+        uses: peter-evans/create-issue-from-file@v4.0.0
+        with:
+          issue-number: ${{ inputs.issue_number }}
+          title: Broken links in documentation
+          content-filepath: ./warnings.txt
+
+      - name: Re-open the links issue
+        if: steps.buildDocs.outcome == 'failure'
+        run: gh issue reopen ${{ inputs.issue_number }}
