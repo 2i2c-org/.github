@@ -78,10 +78,13 @@ jobs:
           out = ["### Link and reference warnings", ""]
           for iline in warnings.read_text().strip().split("\n"):
               file_path, warning = iline.split(": ", 1)
-              file_path, lineno = file_path.rsplit(":")
-              if str(here) in file_path:
+              # If file_path has a line number, it points to an actual file
+              if len(file_path.rsplit(":")) == 2:
+                  file_path, lineno = file_path.rsplit(":")
                   rel_path = file_path.replace(str(here), "").strip("/")
                   out.append(f"[**{rel_path}#{lineno}**](https://github.com/{repo}/blob/main/{rel_path}?plain=1#L{lineno})\n- {warning}\n")
+              # If file_path does not have a line number, it may be a non-existant file
+              # so we just append the error directly.
               else:
                 out.append(f"{iline}\n")
           warnings.write_text("\n".join(out))
