@@ -77,7 +77,7 @@ jobs:
           # Parse each line for the file / line number and build GitHub links.
           out = ["### Link and reference warnings", ""]
           for iline in warnings.read_text().strip().split("\n"):
-              file_path, warning = iline.split(": ", 1)
+              file_path, warning = iline.split(":")
               # Remove the GitHub Action-specific path
               file_path = file_path.replace(str(here), "").strip("/")
               
