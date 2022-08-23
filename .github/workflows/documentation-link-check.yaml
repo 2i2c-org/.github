@@ -77,12 +77,22 @@ jobs:
           # Parse each line for the file / line number and build GitHub links.
           out = ["### Link and reference warnings", ""]
           for iline in warnings.read_text().strip().split("\n"):
-              file_path, warning = iline.split(":")
-              # Remove the GitHub Action-specific path
-              file_path = file_path.replace(str(here), "").strip("/")
-              
+              parts = iline.split(":", 1)
+              if len(parts) == 2:
+                  file_path, warning = parts
+                  
+                  # Remove the GitHub Action-specific path
+                  file_path = file_path.replace(str(here), "").strip("/")
+              else:
+                  # If no colon, assume there's no file path, only a warning.
+                  file_path = None
+                  warning = parts[0]
+
+              # If there's no file_path just append the warning.
+              if not file_path:
+                out.append(f"**Warning**\n- {warning}\n")
               # If file_path has a line number, it points to an actual file
-              if len(file_path.rsplit(":")) == 2:
+              elif len(file_path.rsplit(":")) == 2:
                   file_path, lineno = file_path.rsplit(":")
                   url = f"https://github.com/{repo}/blob/main/{file_path}?plain=1#L{lineno}"
                   out.append(f"[**{file_path}#{lineno}**]({url})\n- {warning}\n")
