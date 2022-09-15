@@ -44,4 +44,4 @@ jobs:
 
       # Run the label sync on each repository in our organization
       - run: >
-          github-label-sync ${{ env.DRYRUN }} -a ${{ secrets.ACCESS_TOKEN }} -A -l ../labels.yml ${{ matrix.repository }}
+          github-label-sync ${{ env.DRYRUN }} -a ${{ secrets.ACCESS_TOKEN }} -A -l .github/labels.yml ${{ matrix.repository }}
