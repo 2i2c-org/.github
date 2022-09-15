@@ -37,7 +37,7 @@ jobs:
       - name: Set dryrun flag
         run: |
           if ${{ github.event.inputs.dryrun }} == 'true'; then
-              echo "DRYRUN=-d" >> "$GITHUB_ENV"
+              echo "DRYRUN='-d'" >> "$GITHUB_ENV"
           else
               echo "DRYRUN=" >> "$GITHUB_ENV"
           fi
@@ -45,7 +45,7 @@ jobs:
       # Run the label sync on each repository in our organization
       - run: >
           github-label-sync
-            $DRYRUN
+            ${{ env.DRYRUN }}
             -a ${{ secrets.ACCESS_TOKEN }}
             -A
             -l ../labels.yml
