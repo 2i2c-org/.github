@@ -1,0 +1,88 @@
+# Functional Area
+- name: "Administration"
+  color: "C5DEF5"
+  aliases: []
+  description: "General actions needed in the organization and interfacing with CS&S."
+
+- name: "Community"
+  color: "C5DEF5"
+  aliases: []
+  description: "Engaging and cultivating communities that we currently serve."
+
+- name: "Engineering:Cloud Ops"
+  color: "C5DEF5"
+  aliases: ["Engineering"]
+  description: "Operational and cloud infrastructure efforts."
+
+- name: "Engineering:Development"
+  color: "C5DEF5"
+  aliases: []
+  description: "Development-focused efforts for engineering team."
+
+- name: "Finance"
+  color: "C5DEF5"
+  aliases: []
+  description: "Accounting and financial information."
+
+- name: "Human Resources"
+  color: "C5DEF5"
+  aliases: []
+  description: "Policies and issues related to people and roles."
+
+- name: "Operations"
+  color: "C5DEF5"
+  aliases: []
+  description: "Planning and coordination practices for our teams."
+
+- name: "Organization"
+  color: "C5DEF5"
+  aliases: []
+  description: "Issues that span the entire 2i2c organization."
+
+- name: "Outreach"
+  color: "C5DEF5"
+  aliases: []
+  description: "Communications from 2i2c to the outside world in general."
+
+- name: "Partnerships"
+  color: "C5DEF5"
+  aliases: []
+  description: "Creating and fostering new collaborations with external groups"
+
+- name: "Product"
+  color: "C5DEF5"
+  aliases: []
+  description: "User-facing features, behavior, UX, etc"
+
+
+# Issue type
+- name: "Bug"
+  color: "1D76DB"
+  aliases: ["bug"]
+  description: "Something isn't working or behaves unexpectedly."
+
+- name: "Discussion"
+  color: "1D76DB"
+  aliases: []
+  description: "A discussion that may not have a specific action at the end."
+
+- name: "Documentation"
+  color: "1D76DB"
+  aliases: []
+  description: "A change to our documentation."
+
+- name: "Enhancement"
+  color: "1D76DB"
+  aliases: []
+  description: "Making an improvement to something or creating something new."
+
+- name: "Meeting:Team Sync"
+  color: "1D76DB"
+  aliases: [":label: meeting:sprint-planning"]
+  description: "Our bi-weekly team sync meetings."
+
+- name: "Task"
+  color: "1D76DB"
+  aliases: []
+  description: "One or more actions to take."
+

@@ -2,11 +2,26 @@
 
 This is a meta repository that defines some shared files that our other repositories inherit.
 
-## Files used in this repository
+Below is a list of major files / functionality in this repository.
 
-Below is a quick list of these files:
+## `.github/ISSUE_TEMPLATE/` sync issue templates
 
-- `.github/ISSUE_TEMPLATE/`: Issue templates for other repositories. When these files changed, they are automatically synced to our other repositories via [this GitHub action](.github/workflows/sync-issue-templates.yaml). See the comments in those actions for more details.
+Issue templates for other repositories. When these files changed, they are automatically synced to our other repositories.
+
+- Syncing is done via [`.github/workflows/sync-issue-templates.yaml`](.github/workflows/sync-issue-templates.yaml).
+- The issue templates are defined in [`.github/sync.yml`](.github/sync.yml).
+
+## `.github/labels.yml` sync issue labels
+
+We automatically synchronize a subset of issue labels across all of our major repositories.
+This is done via a [**workflow_dispatch**](https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/).
+
+- The repositores and action is defined in [`.github/workflows/sync-labels.yml`](.github/workflows/sync-labels.yml).
+- The labels are defined in [`.github/labels.yml`](.github/labels.yml).
+
+## Reusable Workflow - Documentation link checks
+
+We define a re-usable GitHub workflow to use Sphinx's `linkcheck` builder and open an issue if there are broken links. It is defined at [`.github/workflows/documentation-link-check.yaml`](.github/workflows/documentation-link-check.yaml).
 
 ## Pre-commit hooks
 
