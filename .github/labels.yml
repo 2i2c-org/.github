@@ -9,10 +9,10 @@
   aliases: []
   description: "Engaging and cultivating communities that we currently serve."
 
-- name: "Engineering:Cloud Ops"
+- name: "Engineering:SRE"
   color: "C5DEF5"
   aliases: ["Engineering"]
-  description: "Operational and cloud infrastructure efforts."
+  description: "Cloud infrastructure operations and development."
 
 - name: "Engineering:Development"
   color: "C5DEF5"
@@ -27,7 +27,7 @@
 - name: "Human Resources"
   color: "C5DEF5"
   aliases: []
-  description: "Policies and issues related to people and roles."
+  description: "People and roles at 2i2c."
 
 - name: "Operations"
   color: "C5DEF5"
@@ -37,12 +37,12 @@
 - name: "Organization"
   color: "C5DEF5"
   aliases: []
-  description: "Issues that span the entire 2i2c organization."
+  description: "Spans the entire 2i2c organization."
 
 - name: "Outreach"
   color: "C5DEF5"
   aliases: []
-  description: "Communications from 2i2c to the outside world in general."
+  description: "External communications and presentations."
 
 - name: "Partnerships"
   color: "C5DEF5"
@@ -64,7 +64,7 @@
 - name: "Discussion"
   color: "1D76DB"
   aliases: []
-  description: "A discussion that may not have a specific action at the end."
+  description: "A discussion without a specific action to take."
 
 - name: "Documentation"
   color: "1D76DB"
@@ -74,15 +74,15 @@
 - name: "Enhancement"
   color: "1D76DB"
   aliases: []
-  description: "Making an improvement to something or creating something new."
+  description: "An improvement to something or creating something new."
 
 - name: "Meeting:Team Sync"
   color: "1D76DB"
   aliases: [":label: meeting:sprint-planning"]
-  description: "Our bi-weekly team sync meetings."
+  description: "Bi-weekly team sync meetings."
 
 - name: "Task"
   color: "1D76DB"
   aliases: []
-  description: "One or more actions to take."
+  description: "Actions that don't involve changing our code or docs."
 
