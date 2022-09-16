@@ -1,0 +1,52 @@
+# Synchronize Issue Labels from here to several repositories.
+# Labels are defined in .github/labels.yml
+#
+# Summary:
+# Uses a personal access token for @choldgraf with write permissions to 2i2c repositories
+# 
+# ref: https://github.com/Financial-Times/github-label-sync#label-config-file
+
+name: "Sync Issue Labels"
+on:
+  # NOTE: github.event is workflow_dispatch payload:
+  # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      dryrun:
+        description: "dryrun: Preview changes to labels without editing them (true|false)"
+        required: true
+        type: boolean
+        default: true
+
+jobs:
+  sync:
+    strategy:
+      matrix:
+        repository: ["docs", "infrastructure", "meta", "team-compass"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      # Install github-label-sync
+      - run: npm install -g github-label-sync
+      
+      # Decide whether to use the dryrun flag or not
+      - name: Set dryrun flag
+        run: |
+          if ${{ github.event.inputs.dryrun }} == 'true'; then
+              echo "DRYRUN=-d" >> "$GITHUB_ENV"
+          else
+              echo "DRYRUN=" >> "$GITHUB_ENV"
+          fi
+
+      # Run the label sync on each repository in our organization
+      - run: >
+          github-label-sync
+            $DRYRUN
+            -a ${{ secrets.ACCESS_TOKEN }}
+            -A
+            -l ../labels.yml
+            ${{ matrix.repository }}
