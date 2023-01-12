@@ -109,7 +109,7 @@ jobs:
       # If it does, we will update that issue.
       - name: Check for an open issue
         run: |
-          ISSUE_NUMBER=$( gh issue list --search "${{ inputs.issue_title }}" | awk '{print $1}' )
+          ISSUE_NUMBER=$( gh issue list --search "in:title ${{ inputs.issue_title }}" | awk '{print $1}' )
           echo "ISSUE_NUMBER=$ISSUE_NUMBER" >> $GITHUB_ENV
 
       # Use the warnings.txt content to populate a new issue.
