@@ -1,0 +1,30 @@
+# Automatically assigns the authors to a PR.
+# This workflow is set as a required workflow for other repositories in the organization.
+# More about required workflows at https://docs.github.com/en/actions/using-workflows/required-workflows
+# Full list of repos this workflow is required for can be found at https://github.com/organizations/2i2c-org/settings/actions,
+# in the `Required Workflows` section at the bottom.
+name: Auto Author Assign Pull Request
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      # Normally, it's enough for this workflow to be triggered only once, on PR opening/reopening.
+      # But because we use this workflow as a required workflow for other repositories
+      # in the 2i2c organization, it is **expected** to run successfully
+      # for each PR commit in those repositories.
+      # So we trigger it for each commit
+      - synchronize
+
+permissions:
+  pull-requests: write
+
+jobs:
+  assign-author:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/toshimaru/auto-author-assign
+      - name: Automatically assign PR author
+        id: assignation
+        uses: toshimaru/auto-author-assign@v1.6.2
