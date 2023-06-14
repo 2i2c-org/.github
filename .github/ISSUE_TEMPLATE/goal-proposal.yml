@@ -37,9 +37,11 @@ body:
     validations:
       required: false
 
-  - type: References and links to issues
-    id: success
+  - type: textarea
+    id: references
     attributes:
-      label: Definition of completion and success
+      label: References and links to issues
       description: |
-        (optional) A place to track ongoing work items or tasks, as we figure them out.
+        Any links or references to issues relevant to this goal proposal.
+    validations:
+      required: false
