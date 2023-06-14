@@ -1,0 +1,45 @@
+name: 💡 Goal Proposal
+description: A template for a goal proposal that is ready to be discussed and prioritized. Goals sprint board https://github.com/orgs/2i2c-org/projects/44.
+title: "[Proto-goal]: "
+labels: ["proto-goal"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Brief description
+      description: |
+        Short description of the goal proposed.
+        Tips:
+        - focus on outcomes
+        - scope it to not be more than 2 months
+        - try not to list actions
+        - have interested team members
+    validations:
+      required: false
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale and value to our mission
+      description: |
+        Outcomes must be based on value that we've provided to our partner communities.
+        They should meet community needs, allow us to deliver a better service, or further a critical aspect of our mission. 
+    validations:
+      required: false
+
+  - type: textarea
+    id: success
+    attributes:
+      label: Definition of completion and success
+      description: |
+        Outcomes need to be measurable for us to know whether we have achieved them or not.
+        Define a metric of success (quantitative or qualitative) that we can measure to decide if our goal has been accomplished.
+    validations:
+      required: false
+
+  - type: References and links to issues
+    id: success
+    attributes:
+      label: Definition of completion and success
+      description: |
+        (optional) A place to track ongoing work items or tasks, as we figure them out.
