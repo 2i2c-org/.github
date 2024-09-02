@@ -34,6 +34,7 @@ env:
 
 jobs:
   check-links:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -116,7 +117,6 @@ jobs:
       # If ISSUE_NUMBER is None, a new issue will be created.
       # otherwise a pre-existing issue will be updated.
       - name: Create issue from errors output
-        permissions: write-all
         if: steps.buildDocs.outcome == 'failure'
         uses: peter-evans/create-issue-from-file@v5
         with:
